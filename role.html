@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Callie's Role - The Highest Break Ever</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0e1b4d;
+    --blue: #4770db;
+    --blue-light: #5a82e8;
+    --bg-base: #060a18;
+    --bg-raised: #0b1029;
+    --bg-card: #101638;
+    --bg-hover: #161e48;
+    --border: rgba(71, 112, 219, 0.12);
+    --border-light: rgba(71, 112, 219, 0.2);
+    --white: #ffffff;
+    --text: #d4d8e8;
+    --text-dim: #8890b0;
+    --text-muted: #565e80;
+    --accent-glow: rgba(71, 112, 219, 0.15);
+    --gold: #d4a853;
+    --gold-bg: rgba(212, 168, 83, 0.1);
+    --green: #22c55e;
+    --green-bg: rgba(34, 197, 94, 0.1);
+    --purple: #a855f7;
+    --purple-bg: rgba(168, 85, 247, 0.1);
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg-base);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .hero {
+    position: relative;
+    padding: 80px 48px 60px;
+    text-align: center;
+    background: radial-gradient(ellipse at 50% 0%, rgba(71, 112, 219, 0.1) 0%, transparent 60%), var(--bg-base);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--blue), var(--gold), var(--blue), transparent);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    padding: 6px 16px;
+    background: var(--accent-glow);
+    border: 1px solid var(--border-light);
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--blue-light);
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-size: 44px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 14px;
+  }
+
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--gold), #f0d080);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: var(--text-dim);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+
+  .section { padding: 56px 0; }
+  .section + .section { border-top: 1px solid var(--border); }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--blue-light);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .section-desc {
+    font-size: 14px;
+    color: var(--text-dim);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+
+  /* ===== TLDR ===== */
+  .tldr {
+    background: linear-gradient(135deg, var(--bg-card), var(--bg-raised));
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 32px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tldr::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--blue));
+  }
+
+  .tldr h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .tldr p {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.8;
+  }
+
+  .tldr strong { color: var(--white); font-weight: 600; }
+
+  /* ===== PHASES ===== */
+  .phase-list { display: flex; flex-direction: column; gap: 16px; }
+
+  .phase {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 200ms ease;
+  }
+
+  .phase:hover { border-color: var(--border-light); }
+
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .phase-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  .icon-blue { background: var(--accent-glow); color: var(--blue-light); }
+  .icon-gold { background: var(--gold-bg); color: var(--gold); }
+  .icon-green { background: var(--green-bg); color: var(--green); }
+
+  .phase-header-text h4 { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+  .phase-header-text .phase-when { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+
+  .phase-body { padding: 20px 28px; }
+
+
+  .task-list { list-style: none; }
+
+  .task-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(71, 112, 219, 0.06);
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .task-list li:last-child { border-bottom: none; }
+
+  .task-check {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-light);
+    border-radius: 5px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 200ms ease;
+  }
+
+  .task-check:hover { border-color: var(--blue); background: var(--accent-glow); }
+  .task-check.checked { background: var(--green); border-color: var(--green); }
+  .task-check.checked svg { opacity: 1; }
+  .task-check svg { opacity: 0; width: 12px; height: 12px; transition: opacity 150ms; }
+
+  .task-text strong { color: var(--white); font-weight: 600; }
+  .task-text .note { display: block; font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  .deliverables {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .deliverable {
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .deliverable h5 { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .deliverable p { font-size: 12px; color: var(--text-muted); }
+
+
+  .footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .footer p { font-size: 12px; color: var(--text-muted); }
+
+  .download-bar {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 100;
+    display: flex;
+    gap: 8px;
+  }
+
+  .download-btn, .print-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 200ms ease;
+  }
+
+  .download-btn { background: var(--blue); color: var(--white); box-shadow: 0 4px 16px rgba(71, 112, 219, 0.3); }
+  .download-btn:hover { background: var(--blue-light); transform: translateY(-1px); }
+  .print-btn { background: var(--bg-card); color: var(--text); border: 1px solid var(--border-light); }
+  .print-btn:hover { background: var(--bg-hover); }
+  .download-btn svg, .print-btn svg { width: 16px; height: 16px; }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 32px; }
+    .hero { min-height: 360px; }
+    .hero-content { padding: 40px 24px 36px; }
+    .deliverables { grid-template-columns: 1fr; }
+    .container { padding: 0 16px; }
+    .hero-feature img, .phase-image img, .image-break-inner img { height: 240px; }
+  }
+
+  @media print {
+    .download-bar { display: none; }
+    body { background: #fff; color: #1a1a1a; }
+    .hero-overlay { background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.95) 100%); }
+    .hero h1 { color: var(--navy); -webkit-text-fill-color: var(--navy); text-shadow: none; }
+    .phase, .tldr, .deliverable { background: #fff; border-color: #e0e0e0; }
+    .section + .section { border-color: #e0e0e0; }
+    .section-title, h4, h5 { color: var(--navy); }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-badge">Your Role</div>
+  <h1>What <span>You're</span> Responsible For</h1>
+  <p class="hero-sub">Only what's in the campaign notes. Three core moments, three deliverables.</p>
+</header>
+
+<main>
+
+  <!-- ===== TLDR ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="tldr">
+        <h3>The Short Version</h3>
+        <p>You are <strong>the talent</strong>. Three things on you: film the announcement video, sit for the Miami interview with Break'n Bad, and execute the helicopter card break + skydive above Everest.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PHASES ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Your Responsibilities</div>
+      <div class="section-title">Phase by Phase</div>
+      <div class="section-desc">Only what the campaign notes list as your responsibility.</div>
+
+      <div class="phase-list">
+
+        <!-- PHASE 1: ANNOUNCEMENT -->
+        <div class="phase">
+          <div class="phase-header">
+            <div class="phase-number icon-blue">01</div>
+            <div class="phase-header-text">
+              <h4>Announcement Video (Hero Tease)</h4>
+              <div class="phase-when">Before departure</div>
+            </div>
+          </div>
+          <div class="phase-body">
+            <ul class="task-list">
+              <li>
+                <div class="task-check" onclick="this.classList.toggle('checked')"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="task-text"><strong>Introduce the stunt and stakes</strong><span class="note">"We're attempting the highest altitude break in history..."</span></div>
+              </li>
+              <li>
+                <div class="task-check" onclick="this.classList.toggle('checked')"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="task-text"><strong>CTA:</strong> Enter giveaway (details in caption), follow for updates, save the date for the jump</div>
+              </li>
+              <li>
+                <div class="task-check" onclick="this.classList.toggle('checked')"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="task-text"><strong>Distribute on:</strong> IG Reels, TikTok, YouTube Shorts, live streams</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PHASE 2: MIAMI INTERVIEW -->
+        <div class="phase">
+          <div class="phase-header">
+            <div class="phase-number icon-gold">02</div>
+            <div class="phase-header-text">
+              <h4>Pre-Stunt Interview (Miami Content)</h4>
+              <div class="phase-when">Before Nepal departure</div>
+            </div>
+          </div>
+          <div class="phase-body">
+            <ul class="task-list">
+              <li>
+                <div class="task-check" onclick="this.classList.toggle('checked')"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="task-text"><strong>Meet Break'n Bad team</strong> before Nepal departure</div>
+              </li>
+              <li>
+                <div class="task-check" onclick="this.classList.toggle('checked')"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="task-text"><strong>Mini documentary-style interview</strong><span class="note">"Why this stunt?" narrative</span></div>
+              </li>
+              <li>
+                <div class="task-check" onclick="this.classList.toggle('checked')"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="task-text"><strong>Personality-driven clips</strong> for social cuts</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PHASE 3: THE BREAK + SKYDIVE -->
+        <div class="phase">
+          <div class="phase-header">
+            <div class="phase-number icon-green">03</div>
+            <div class="phase-header-text">
+              <h4>Helicopter Break + Skydive (Hero Content)</h4>
+              <div class="phase-when">Nepal, above Everest</div>
+            </div>
+          </div>
+          <div class="phase-body">
+            <ul class="task-list">
+              <li>
+                <div class="task-check" onclick="this.classList.toggle('checked')"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="task-text"><strong>Card break filmed inside helicopter above Everest</strong><span class="note">Cinematic + POV angles</span></div>
+              </li>
+              <li>
+                <div class="task-check" onclick="this.classList.toggle('checked')"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="task-text"><strong>Cards featured again mid-skydive</strong></div>
+              </li>
+            </ul>
+
+            <div class="deliverables">
+              <div class="deliverable">
+                <h5>Edited Hero Reel</h5>
+                <p>60-90 sec</p>
+              </div>
+              <div class="deliverable">
+                <h5>Short-Form Cuts</h5>
+                <p>10-30 sec clips</p>
+              </div>
+              <div class="deliverable">
+                <h5>Behind-the-Scenes</h5>
+                <p>BTS footage</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Callie Rounds - The Highest Break Ever - Role Overview</p>
+    </div>
+  </footer>
+</main>
+
+<div class="download-bar">
+  <button class="print-btn" onclick="window.print()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Print / PDF
+  </button>
+  <button class="download-btn" onclick="downloadPNG()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Download PNG
+  </button>
+</div>
+
+<script>
+async function downloadPNG() {
+  const btn = document.querySelector('.download-btn');
+  const bar = document.querySelector('.download-bar');
+  btn.textContent = 'Generating...';
+  btn.disabled = true;
+  bar.style.display = 'none';
+  try {
+    const { default: html2canvas } = await import('https://cdn.skypack.dev/html2canvas');
+    const canvas = await html2canvas(document.body, {
+      backgroundColor: '#060a18', scale: 2, useCORS: true, logging: false, windowWidth: 1000,
+    });
+    const link = document.createElement('a');
+    link.download = 'callie-role-highest-break-ever.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  } catch (e) { alert('PNG generation failed. Use Print / PDF instead.'); }
+  bar.style.display = 'flex';
+  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PNG';
+  btn.disabled = false;
+}
+</script>
+
+</body>
+</html>

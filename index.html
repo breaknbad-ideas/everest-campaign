@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Highest Break Ever - Campaign Overview</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0e1b4d;
+    --blue: #4770db;
+    --blue-light: #5a82e8;
+    --lavender: #eff0f5;
+    --bg-base: #060a18;
+    --bg-raised: #0b1029;
+    --bg-card: #101638;
+    --bg-hover: #161e48;
+    --border: rgba(71, 112, 219, 0.12);
+    --border-light: rgba(71, 112, 219, 0.2);
+    --white: #ffffff;
+    --text: #d4d8e8;
+    --text-dim: #8890b0;
+    --text-muted: #565e80;
+    --accent: #4770db;
+    --accent-glow: rgba(71, 112, 219, 0.15);
+    --gold: #d4a853;
+    --gold-bg: rgba(212, 168, 83, 0.1);
+    --green: #22c55e;
+    --green-bg: rgba(34, 197, 94, 0.1);
+    --amber: #f59e0b;
+    --amber-bg: rgba(245, 158, 11, 0.1);
+    --red: #ef4444;
+    --red-bg: rgba(239, 68, 68, 0.1);
+    --purple: #a855f7;
+    --purple-bg: rgba(168, 85, 247, 0.1);
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg-base);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ========== HERO ========== */
+  .hero {
+    position: relative;
+    padding: 0;
+    min-height: 520px;
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('assets/everest-hero.avif');
+    background-size: cover;
+    background-position: center 30%;
+    z-index: 0;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, rgba(6,10,24,0.2) 0%, rgba(6,10,24,0.5) 40%, rgba(6,10,24,0.95) 100%);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 80px 48px 60px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--blue), var(--gold), var(--blue), transparent);
+    z-index: 3;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: var(--accent-glow);
+    border: 1px solid var(--border-light);
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--blue-light);
+    margin-bottom: 32px;
+  }
+
+  .hero-badge svg { width: 14px; height: 14px; }
+
+  .hero h1 {
+    font-size: 56px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--gold), #f0d080);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-dim);
+    max-width: 680px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-item { text-align: center; }
+
+  .hero-meta-item .label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .hero-meta-item .value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .hero-meta-item .value a {
+    color: var(--blue-light);
+    text-decoration: none;
+  }
+
+  /* ========== IMAGE BREAKS ========== */
+  .image-break { padding: 0; }
+
+  .image-break-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .image-break-inner .img-wrap {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .image-break-inner img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ========== CONTAINER ========== */
+  .container {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ========== SECTIONS ========== */
+  .section { padding: 72px 0; }
+  .section + .section { border-top: 1px solid var(--border); }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--blue-light);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .section-desc {
+    font-size: 15px;
+    color: var(--text-dim);
+    max-width: 640px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .icon-blue { background: var(--accent-glow); color: var(--blue-light); }
+  .icon-gold { background: var(--gold-bg); color: var(--gold); }
+  .icon-green { background: var(--green-bg); color: var(--green); }
+  .icon-purple { background: var(--purple-bg); color: var(--purple); }
+  .icon-amber { background: var(--amber-bg); color: var(--amber); }
+
+  .tag {
+    display: inline-flex;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .tag-blue { background: var(--accent-glow); color: var(--blue-light); }
+  .tag-gold { background: var(--gold-bg); color: var(--gold); }
+  .tag-green { background: var(--green-bg); color: var(--green); }
+  .tag-purple { background: var(--purple-bg); color: var(--purple); }
+  .tag-amber { background: var(--amber-bg); color: var(--amber); }
+
+  /* ========== OBJECTIVES - VISUAL DIAGRAM ========== */
+  .objectives-diagram {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    position: relative;
+  }
+
+  .obj-node {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 28px;
+    text-align: center;
+    position: relative;
+    transition: border-color 200ms ease, transform 200ms ease;
+  }
+
+  .obj-node:hover {
+    border-color: var(--border-light);
+    transform: translateY(-4px);
+  }
+
+  .obj-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    flex-shrink: 0;
+  }
+
+  .obj-connector svg {
+    width: 32px;
+    height: 32px;
+    color: var(--text-muted);
+    opacity: 0.5;
+  }
+
+  .obj-ring {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    position: relative;
+  }
+
+  .obj-ring::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    padding: 3px;
+    background: conic-gradient(from 0deg, var(--blue), var(--gold), var(--blue));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .obj-ring svg { width: 28px; height: 28px; }
+
+  .obj-node h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .obj-node p {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.65;
+  }
+
+  /* ========== FLOW TIMELINE ========== */
+  .flow-timeline {
+    position: relative;
+  }
+
+  .flow-track {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, var(--blue), var(--gold), var(--green), var(--purple));
+    border-radius: 4px;
+  }
+
+  .flow-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    position: relative;
+    padding-bottom: 48px;
+  }
+
+  .flow-item:last-child { padding-bottom: 0; }
+
+  .flow-left, .flow-right {
+    flex: 1;
+  }
+
+  .flow-center {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .flow-dot {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--white);
+    position: relative;
+    box-shadow: 0 0 24px rgba(71, 112, 219, 0.3);
+  }
+
+  .flow-dot::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid;
+    border-color: inherit;
+    opacity: 0.3;
+  }
+
+  .flow-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    transition: border-color 200ms ease, transform 200ms ease;
+  }
+
+  .flow-card:hover {
+    border-color: var(--border-light);
+    transform: translateY(-2px);
+  }
+
+  .flow-card::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    width: 20px;
+    height: 2px;
+  }
+
+  .flow-item:nth-child(odd) .flow-card::before {
+    right: -20px;
+    background: linear-gradient(90deg, var(--border-light), transparent);
+  }
+
+  .flow-item:nth-child(even) .flow-card::before {
+    left: -20px;
+    background: linear-gradient(270deg, var(--border-light), transparent);
+  }
+
+  .flow-item:nth-child(odd) .flow-right { padding-left: 0; }
+  .flow-item:nth-child(odd) .flow-left { padding-right: 20px; }
+  .flow-item:nth-child(even) .flow-left { padding-left: 0; }
+  .flow-item:nth-child(even) .flow-right { padding-left: 20px; }
+
+  .flow-phase-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .flow-card h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .flow-card p {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .flow-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  /* ========== VISUAL FUNNEL ========== */
+  .funnel-visual {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .funnel-layer {
+    position: relative;
+    margin: 0 auto;
+    transition: transform 200ms ease;
+    cursor: default;
+  }
+
+  .funnel-layer:hover {
+    transform: scale(1.02);
+  }
+
+  .funnel-shape {
+    position: relative;
+    padding: 28px 40px;
+    text-align: center;
+    clip-path: polygon(var(--left-top) 0%, var(--right-top) 0%, var(--right-bottom) 100%, var(--left-bottom) 100%);
+  }
+
+  .funnel-layer-1 .funnel-shape {
+    --left-top: 0%;
+    --right-top: 100%;
+    --left-bottom: 6%;
+    --right-bottom: 94%;
+    background: linear-gradient(135deg, rgba(71, 112, 219, 0.2), rgba(71, 112, 219, 0.08));
+    border-radius: 16px 16px 0 0;
+  }
+
+  .funnel-layer-2 .funnel-shape {
+    --left-top: 6%;
+    --right-top: 94%;
+    --left-bottom: 14%;
+    --right-bottom: 86%;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.08));
+  }
+
+  .funnel-layer-3 .funnel-shape {
+    --left-top: 14%;
+    --right-top: 86%;
+    --left-bottom: 24%;
+    --right-bottom: 76%;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.08));
+    border-radius: 0 0 16px 16px;
+  }
+
+  .funnel-outline {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+  }
+
+  .funnel-layer-1 .funnel-outline {
+    border-top: 2px solid rgba(71, 112, 219, 0.4);
+    border-left: 2px solid rgba(71, 112, 219, 0.3);
+    border-right: 2px solid rgba(71, 112, 219, 0.3);
+    border-radius: 16px 16px 0 0;
+    clip-path: polygon(0% 0%, 100% 0%, 94% 100%, 6% 100%);
+  }
+
+  .funnel-layer-2 .funnel-outline {
+    border-left: 2px solid rgba(245, 158, 11, 0.3);
+    border-right: 2px solid rgba(245, 158, 11, 0.3);
+    clip-path: polygon(6% 0%, 94% 0%, 86% 100%, 14% 100%);
+  }
+
+  .funnel-layer-3 .funnel-outline {
+    border-bottom: 2px solid rgba(34, 197, 94, 0.4);
+    border-left: 2px solid rgba(34, 197, 94, 0.3);
+    border-right: 2px solid rgba(34, 197, 94, 0.3);
+    border-radius: 0 0 16px 16px;
+    clip-path: polygon(14% 0%, 86% 0%, 76% 100%, 24% 100%);
+  }
+
+  .funnel-stage-label {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+  }
+
+  .funnel-layer-1 .funnel-stage-label { color: var(--blue-light); }
+  .funnel-layer-2 .funnel-stage-label { color: var(--amber); }
+  .funnel-layer-3 .funnel-stage-label { color: var(--green); }
+
+  .funnel-stage-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .funnel-items {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .funnel-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .funnel-item-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .funnel-arrow {
+    display: flex;
+    justify-content: center;
+    padding: 4px 0;
+  }
+
+  .funnel-arrow svg {
+    width: 24px;
+    height: 24px;
+    opacity: 0.3;
+  }
+
+  /* Side annotations for funnel */
+  .funnel-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: stretch;
+  }
+
+  .funnel-annotations {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .funnel-annot {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .funnel-annot-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .funnel-annot-icon svg { width: 18px; height: 18px; }
+
+  .funnel-annot-text {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .funnel-annot-text strong {
+    color: var(--white);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* ========== DELIVERABLES VISUAL ========== */
+  .deliverables-visual {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .deliv-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 200ms ease, transform 200ms ease;
+  }
+
+  .deliv-card:hover {
+    border-color: var(--border-light);
+    transform: translateY(-3px);
+  }
+
+  .deliv-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .deliv-card:nth-child(1)::before, .deliv-card:nth-child(2)::before { background: var(--blue); }
+  .deliv-card:nth-child(3)::before, .deliv-card:nth-child(4)::before { background: var(--gold); }
+  .deliv-card:nth-child(5)::before, .deliv-card:nth-child(6)::before { background: var(--green); }
+  .deliv-card:nth-child(7)::before { background: var(--purple); }
+
+  .deliv-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+  }
+
+  .deliv-icon svg { width: 24px; height: 24px; }
+
+  .deliv-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .deliv-format {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+
+  .deliv-platforms {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .deliv-platforms span {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    background: rgba(71, 112, 219, 0.08);
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  /* ========== IDEAS GRID ========== */
+  .ideas-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .idea-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    transition: border-color 200ms ease, transform 200ms ease;
+    cursor: default;
+  }
+
+  .idea-card:hover {
+    border-color: var(--border-light);
+    transform: translateY(-1px);
+  }
+
+  .idea-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .idea-card h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .idea-card p {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.65;
+  }
+
+  .idea-card .idea-tag { margin-top: 12px; }
+
+  /* ========== MESSAGING PILLARS - VISUAL ========== */
+  .pillars-visual {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    position: relative;
+  }
+
+  .pillar-v {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 24px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 200ms ease, transform 200ms ease;
+  }
+
+  .pillar-v:hover {
+    border-color: var(--border-light);
+    transform: translateY(-3px);
+  }
+
+  .pillar-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+
+  .pillar-v:nth-child(1) .pillar-bar { background: linear-gradient(90deg, var(--gold), #f0d080); }
+  .pillar-v:nth-child(2) .pillar-bar { background: linear-gradient(90deg, var(--red), #ff7070); }
+  .pillar-v:nth-child(3) .pillar-bar { background: linear-gradient(90deg, var(--blue), var(--blue-light)); }
+  .pillar-v:nth-child(4) .pillar-bar { background: linear-gradient(90deg, var(--green), #4ade80); }
+
+  .pillar-icon-wrap {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    position: relative;
+  }
+
+  .pillar-v:nth-child(1) .pillar-icon-wrap { background: var(--gold-bg); }
+  .pillar-v:nth-child(2) .pillar-icon-wrap { background: var(--red-bg); }
+  .pillar-v:nth-child(3) .pillar-icon-wrap { background: var(--accent-glow); }
+  .pillar-v:nth-child(4) .pillar-icon-wrap { background: var(--green-bg); }
+
+  .pillar-icon-wrap svg { width: 26px; height: 26px; }
+
+  .pillar-v h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .pillar-v p {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* ========== METRICS - VISUAL ========== */
+  .metrics-visual {
+    display: flex;
+    gap: 16px;
+    position: relative;
+  }
+
+  .metric-v {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 200ms ease, transform 200ms ease;
+  }
+
+  .metric-v:hover {
+    border-color: var(--border-light);
+    transform: translateY(-3px);
+  }
+
+  .metric-ring {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    background: var(--accent-glow);
+    position: relative;
+  }
+
+  .metric-ring::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    border: 2px solid var(--blue);
+    opacity: 0.2;
+  }
+
+  .metric-ring svg {
+    width: 22px;
+    height: 22px;
+    color: var(--blue-light);
+  }
+
+  .metric-v h5 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .metric-v p {
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  /* ========== FOOTER ========== */
+  .footer {
+    padding: 48px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .footer-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 20px;
+  }
+
+  .footer-logo {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+
+  .footer-x { color: var(--text-muted); font-size: 14px; }
+
+  .footer p {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+
+  /* ========== DOWNLOAD ========== */
+  .download-bar {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 100;
+    display: flex;
+    gap: 8px;
+  }
+
+  .download-btn, .print-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 200ms ease;
+  }
+
+  .download-btn { background: var(--blue); color: var(--white); box-shadow: 0 4px 16px rgba(71, 112, 219, 0.3); }
+  .download-btn:hover { background: var(--blue-light); transform: translateY(-1px); }
+  .print-btn { background: var(--bg-card); color: var(--text); border: 1px solid var(--border-light); }
+  .print-btn:hover { background: var(--bg-hover); }
+  .download-btn svg, .print-btn svg { width: 16px; height: 16px; }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 900px) {
+    .hero h1 { font-size: 36px; }
+    .hero { min-height: 380px; }
+    .hero-content { padding: 48px 24px 40px; }
+    .image-break-inner img { height: 260px; }
+    .objectives-diagram { flex-direction: column; }
+    .obj-connector { width: auto; height: 32px; transform: rotate(90deg); }
+    .flow-timeline { display: block; }
+    .flow-track { display: none; }
+    .flow-item { flex-direction: column; padding-bottom: 24px; }
+    .flow-left, .flow-right { padding: 0 !important; }
+    .flow-center { width: 100%; flex-direction: row; gap: 12px; margin-bottom: 12px; }
+    .flow-card::before { display: none; }
+    .funnel-wrapper { flex-direction: column; }
+    .ideas-grid { grid-template-columns: 1fr; }
+    .pillars-visual { grid-template-columns: repeat(2, 1fr); }
+    .metrics-visual { flex-wrap: wrap; }
+    .metric-v { min-width: calc(50% - 8px); }
+    .deliverables-visual { grid-template-columns: 1fr; }
+    .hero-meta { gap: 24px; }
+    .section-title { font-size: 24px; }
+  }
+
+  @media (max-width: 600px) {
+    .pillars-visual { grid-template-columns: 1fr; }
+    .metric-v { min-width: 100%; }
+    .container { padding: 0 16px; }
+  }
+
+  /* ========== PRINT ========== */
+  @media print {
+    .download-bar { display: none; }
+    body { background: #fff; color: #1a1a1a; }
+    .hero { background: #f8f9fc; }
+    .hero h1 { color: var(--navy); -webkit-text-fill-color: var(--navy); }
+    .hero::before { display: none; }
+    .obj-node, .flow-card, .funnel-layer, .deliv-card, .idea-card, .pillar-v, .metric-v, .funnel-annot {
+      background: #fff;
+      border-color: #e0e0e0;
+    }
+    .section + .section { border-color: #e0e0e0; }
+    .section-title, h3, h4, h5 { color: var(--navy); }
+    .hero-badge, .tag { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+  <div class="hero-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    Campaign Overview
+  </div>
+  <h1>The <span>Highest Break</span> Ever</h1>
+  <p class="hero-sub" style="color: rgba(255,255,255,0.8);">The first-ever sports card break above Mount Everest. A helicopter, a skydive, and a moment that redefines what a card break can be.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <div class="label">Talent</div>
+      <div class="value">Callie Rounds</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="label">Partners</div>
+      <div class="value">Break'n Bad + Fanatics</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="label">Location</div>
+      <div class="value">Nepal / Mount Everest</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="label">Altitude</div>
+      <div class="value">23,000+ ft</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="label">Instagram</div>
+      <div class="value"><a href="https://instagram.com/callie.rounds" target="_blank">@callie.rounds</a></div>
+    </div>
+  </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== CAMPAIGN OBJECTIVES - DIAGRAM ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Campaign Objectives</div>
+      <div class="section-title">What This Campaign Achieves</div>
+      <div class="section-desc">Three interconnected goals that compound on each other to create lasting impact.</div>
+
+      <div class="objectives-diagram">
+        <div class="obj-node">
+          <div class="obj-ring" style="color: var(--gold);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h4>Viral, Category-Defining Moment</h4>
+          <p>Create the most talked-about break in sports card history. A moment so visual and extreme it demands to be shared.</p>
+        </div>
+
+        <div class="obj-connector">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+
+        <div class="obj-node">
+          <div class="obj-ring" style="color: var(--blue-light);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h4>Expand Beyond Collectors</h4>
+          <p>Reach mainstream audiences through adventure content and creator-driven storytelling. New eyeballs on Break'n Bad.</p>
+        </div>
+
+        <div class="obj-connector">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+
+        <div class="obj-node">
+          <div class="obj-ring" style="color: var(--green);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h4>Drive Engagement and Affinity</h4>
+          <p>Fuel giveaways, live stream participation, and community buzz across social and live platforms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CORE CAMPAIGN MOMENTS - ALTERNATING FLOW ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Core Campaign Moments</div>
+      <div class="section-title">The Four Pillars of Content</div>
+      <div class="section-desc">Each moment builds on the last, creating a narrative arc from announcement through execution to the final reveal.</div>
+
+      <div class="flow-timeline">
+        <div class="flow-track"></div>
+
+        <!-- Moment 1 - Left -->
+        <div class="flow-item">
+          <div class="flow-left">
+            <div class="flow-card">
+              <div class="flow-phase-label" style="color: var(--blue-light);">Phase 01</div>
+              <h4>Announcement Video (Hero Tease)</h4>
+              <p>Callie introduces the stunt and the stakes: "We're attempting the highest altitude break in history." CTA drives giveaway entries, follows, and save-the-date engagement.</p>
+              <div class="flow-tags">
+                <span class="tag tag-blue">IG Reels</span>
+                <span class="tag tag-blue">TikTok</span>
+                <span class="tag tag-blue">YouTube Shorts</span>
+                <span class="tag tag-blue">Live Streams</span>
+              </div>
+            </div>
+          </div>
+          <div class="flow-center">
+            <div class="flow-dot" style="background: var(--blue); border-color: var(--blue);">01</div>
+          </div>
+          <div class="flow-right"></div>
+        </div>
+
+        <!-- Moment 2 - Right -->
+        <div class="flow-item">
+          <div class="flow-left"></div>
+          <div class="flow-center">
+            <div class="flow-dot" style="background: var(--gold); border-color: var(--gold);">02</div>
+          </div>
+          <div class="flow-right">
+            <div class="flow-card">
+              <div class="flow-phase-label" style="color: var(--gold);">Phase 02</div>
+              <h4>Pre-Stunt Interview (Miami Content)</h4>
+              <p>Break'n Bad team meets Callie before Nepal departure. Mini documentary-style interview exploring "Why this stunt?" Humanizes Callie and builds emotional investment before the main event.</p>
+              <div class="flow-tags">
+                <span class="tag tag-gold">Documentary Style</span>
+                <span class="tag tag-gold">Personality-Driven</span>
+                <span class="tag tag-gold">Narrative Building</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Moment 3 - Left -->
+        <div class="flow-item">
+          <div class="flow-left">
+            <div class="flow-card">
+              <div class="flow-phase-label" style="color: var(--green);">Phase 03</div>
+              <h4>Helicopter Break + Skydive (Hero Content)</h4>
+              <p>The main event. Card break filmed inside a helicopter above Everest with cinematic and POV angles. Cards featured again mid-skydive. High-intensity, once-in-a-lifetime footage.</p>
+              <div class="flow-tags">
+                <span class="tag tag-green">Hero Reel (60-90 sec)</span>
+                <span class="tag tag-green">Short-Form Cuts</span>
+                <span class="tag tag-green">BTS Footage</span>
+              </div>
+            </div>
+          </div>
+          <div class="flow-center">
+            <div class="flow-dot" style="background: var(--green); border-color: var(--green);">03</div>
+          </div>
+          <div class="flow-right"></div>
+        </div>
+
+        <!-- Moment 4 - Right -->
+        <div class="flow-item">
+          <div class="flow-left"></div>
+          <div class="flow-center">
+            <div class="flow-dot" style="background: var(--purple); border-color: var(--purple);">04</div>
+          </div>
+          <div class="flow-right">
+            <div class="flow-card">
+              <div class="flow-phase-label" style="color: var(--purple);">Phase 04</div>
+              <h4>Fanatics Collaboration Layer</h4>
+              <p>Co-branded packaging and cards used in the break. Joint giveaway. Amplification through Fanatics social channels and email. Legitimizes the "historic" claim and expands reach into a massive collector audience.</p>
+              <div class="flow-tags">
+                <span class="tag tag-purple">Co-Branded Cards</span>
+                <span class="tag tag-purple">Joint Giveaway</span>
+                <span class="tag tag-purple">Cross-Platform</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKYDIVING IMAGE BREAK ===== -->
+  <div class="image-break" style="padding: 24px 0;">
+    <div class="image-break-inner">
+      <div class="img-wrap">
+        <img src="assets/skydive.jpg" alt="Callie Rounds in freefall">
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CONTENT FUNNEL - VISUAL DIAGRAM ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Content Strategy</div>
+      <div class="section-title">Full-Funnel Content Approach</div>
+      <div class="section-desc">From first-touch awareness through deep engagement to action. Every piece of content has a purpose in the funnel.</div>
+
+      <div class="funnel-wrapper">
+        <div class="funnel-visual" style="flex: 1.4;">
+          <!-- Top of Funnel -->
+          <div class="funnel-layer funnel-layer-1">
+            <div class="funnel-shape">
+              <div class="funnel-outline"></div>
+              <div class="funnel-stage-label">Awareness</div>
+              <div class="funnel-stage-title">Top of Funnel</div>
+              <div class="funnel-items">
+                <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--blue);"></div>Announcement video</div>
+                <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--blue);"></div>Teaser clips</div>
+                <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--blue);"></div>Everest hooks</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="funnel-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+
+          <!-- Mid Funnel -->
+          <div class="funnel-layer funnel-layer-2">
+            <div class="funnel-shape">
+              <div class="funnel-outline"></div>
+              <div class="funnel-stage-label">Engagement</div>
+              <div class="funnel-stage-title">Mid Funnel</div>
+              <div class="funnel-items">
+                <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--amber);"></div>Training content</div>
+                <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--amber);"></div>Miami interview</div>
+                <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--amber);"></div>BTS planning</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="funnel-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+
+          <!-- Bottom Funnel -->
+          <div class="funnel-layer funnel-layer-3">
+            <div class="funnel-shape">
+              <div class="funnel-outline"></div>
+              <div class="funnel-stage-label">Action</div>
+              <div class="funnel-stage-title">Bottom Funnel</div>
+              <div class="funnel-items">
+                <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--green);"></div>Card giveaway</div>
+                <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--green);"></div>Watch reminders</div>
+                <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--green);"></div>Live streams</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="funnel-annotations">
+          <div class="funnel-annot">
+            <div class="funnel-annot-icon icon-blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <div class="funnel-annot-text">
+              <strong>Maximum Reach</strong>
+              Scroll-stopping content that introduces the stunt to the widest possible audience
+            </div>
+          </div>
+          <div class="funnel-annot">
+            <div class="funnel-annot-icon icon-amber">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <div class="funnel-annot-text">
+              <strong>Emotional Investment</strong>
+              Narrative content that makes the audience care about the outcome
+            </div>
+          </div>
+          <div class="funnel-annot">
+            <div class="funnel-annot-icon icon-green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="funnel-annot-text">
+              <strong>Convert to Action</strong>
+              Giveaway entries, follows, live attendance, and Fanatics engagement
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DELIVERABLES - VISUAL CARDS ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Deliverables</div>
+      <div class="section-title">Content Output Summary</div>
+      <div class="section-desc">Complete breakdown of deliverables across the campaign lifecycle.</div>
+
+      <div class="deliverables-visual">
+        <div class="deliv-card">
+          <div class="deliv-icon icon-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          </div>
+          <h4>Hero Announcement</h4>
+          <div class="deliv-format">Short-form vertical, 15-60 sec</div>
+          <div class="deliv-platforms">
+            <span>IG Reels</span><span>TikTok</span><span>Shorts</span>
+          </div>
+        </div>
+
+        <div class="deliv-card">
+          <div class="deliv-icon icon-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h4>Miami Interview</h4>
+          <div class="deliv-format">Documentary-style, 3-5 min + cuts</div>
+          <div class="deliv-platforms">
+            <span>YouTube</span><span>IG</span><span>TikTok</span>
+          </div>
+        </div>
+
+        <div class="deliv-card">
+          <div class="deliv-icon icon-gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          </div>
+          <h4>Hero Reel</h4>
+          <div class="deliv-format">Cinematic edit, 60-90 sec</div>
+          <div class="deliv-platforms">
+            <span>All Platforms</span>
+          </div>
+        </div>
+
+        <div class="deliv-card">
+          <div class="deliv-icon icon-gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+          </div>
+          <h4>Short-Form Cuts</h4>
+          <div class="deliv-format">Vertical clips, 10-30 sec each</div>
+          <div class="deliv-platforms">
+            <span>IG Reels</span><span>TikTok</span><span>Shorts</span>
+          </div>
+        </div>
+
+        <div class="deliv-card">
+          <div class="deliv-icon icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+          </div>
+          <h4>Behind-the-Scenes</h4>
+          <div class="deliv-format">Raw/lightly edited, varies</div>
+          <div class="deliv-platforms">
+            <span>Stories</span><span>YouTube</span><span>TikTok</span>
+          </div>
+        </div>
+
+        <div class="deliv-card">
+          <div class="deliv-icon icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h4>Road to Everest Series</h4>
+          <div class="deliv-format">Episodic short-form, 30-60 sec</div>
+          <div class="deliv-platforms">
+            <span>All Platforms</span>
+          </div>
+        </div>
+
+        <div class="deliv-card">
+          <div class="deliv-icon icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h4>"Did It Survive?" Reveal</h4>
+          <div class="deliv-format">Short-form, 15-60 sec</div>
+          <div class="deliv-platforms">
+            <span>IG Reels</span><span>TikTok</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ADDITIONAL CAMPAIGN IDEAS ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Amplification</div>
+      <div class="section-title">Additional Campaign Ideas</div>
+      <div class="section-desc">Highly recommended extensions that maximize reach, build anticipation, and create ongoing engagement beyond the core moments.</div>
+
+      <div class="ideas-grid">
+        <div class="idea-card">
+          <div class="idea-num">Idea 01</div>
+          <h4>"Road to Everest" Series</h4>
+          <p>Short episodic content leading up to the jump: altitude training, packing the cards, travel to Nepal. Builds narrative and anticipation vs. a one-off moment.</p>
+          <div class="idea-tag"><span class="tag tag-blue">Series Content</span></div>
+        </div>
+        <div class="idea-card">
+          <div class="idea-num">Idea 02</div>
+          <h4>Altitude Countdown Mechanic</h4>
+          <p>Visual countdown from sea level to 29,000 ft. Each post represents increasing altitude milestones. Hook: "We're getting closer to the highest break ever."</p>
+          <div class="idea-tag"><span class="tag tag-gold">Visual Hook</span></div>
+        </div>
+        <div class="idea-card">
+          <div class="idea-num">Idea 03</div>
+          <h4>Card Reveal Strategy</h4>
+          <p>Tease the cards before the stunt with blurred previews, partial reveals, and "Guess the card" engagement posts. Drives collector speculation and shares.</p>
+          <div class="idea-tag"><span class="tag tag-purple">Engagement</span></div>
+        </div>
+        <div class="idea-card">
+          <div class="idea-num">Idea 04</div>
+          <h4>"What Would You Risk?"</h4>
+          <p>Engagement-driven social prompt: "Would you skydive with a $X card?" Polls, duets, and stitches that invite audience participation.</p>
+          <div class="idea-tag"><span class="tag tag-amber">Social Prompt</span></div>
+        </div>
+        <div class="idea-card">
+          <div class="idea-num">Idea 05</div>
+          <h4>Live Stream Tie-In</h4>
+          <p>Pre-jump live stream Q&A to build hype. Post-jump reaction stream breaking down the footage. Brings the community into the moment in real time.</p>
+          <div class="idea-tag"><span class="tag tag-green">Live</span></div>
+        </div>
+        <div class="idea-card">
+          <div class="idea-num">Idea 06</div>
+          <h4>Limited "Everest Break" Drop</h4>
+          <p>If feasible with Fanatics: special branded packs tied to the stunt. Only available during the campaign window. Scarcity drives action.</p>
+          <div class="idea-tag"><span class="tag tag-gold">Commerce</span></div>
+        </div>
+        <div class="idea-card">
+          <div class="idea-num">Idea 07</div>
+          <h4>Press + PR Angle</h4>
+          <p>Pitch as "First-ever sports card break above Mount Everest." Targets sports media, collectibles outlets, and mainstream viral coverage.</p>
+          <div class="idea-tag"><span class="tag tag-blue">PR</span></div>
+        </div>
+        <div class="idea-card">
+          <div class="idea-num">Idea 08</div>
+          <h4>"Did It Survive?" Post-Stunt Hook</h4>
+          <p>After landing: reveal the condition of the cards. Adds suspense and payoff. The question everyone will be asking, turned into content.</p>
+          <div class="idea-tag"><span class="tag tag-purple">Suspense</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EVEREST IMAGE BREAK ===== -->
+  <div class="image-break" style="padding: 24px 0;">
+    <div class="image-break-inner">
+      <div class="img-wrap">
+        <img src="ebc-trek-1.webp" alt="Mount Everest at sunset" style="object-position: center 40%;">
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MESSAGING PILLARS - VISUAL ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Messaging</div>
+      <div class="section-title">Key Messaging Pillars</div>
+      <div class="section-desc">Four themes that anchor every piece of campaign communication.</div>
+
+      <div class="pillars-visual">
+        <div class="pillar-v">
+          <div class="pillar-bar"></div>
+          <div class="pillar-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h4>Historic</h4>
+          <p>Never been done before. First of its kind. A record-setting moment in the sports card space.</p>
+        </div>
+        <div class="pillar-v">
+          <div class="pillar-bar"></div>
+          <div class="pillar-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h4>Risk + Reward</h4>
+          <p>Cards at extreme altitude. High stakes, high payoff. The tension between value and spectacle.</p>
+        </div>
+        <div class="pillar-v">
+          <div class="pillar-bar"></div>
+          <div class="pillar-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-light)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h4>Spectacle</h4>
+          <p>Visual, cinematic, shareable. Content so stunning it stops the scroll and demands attention.</p>
+        </div>
+        <div class="pillar-v">
+          <div class="pillar-bar"></div>
+          <div class="pillar-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h4>Community</h4>
+          <p>Fans can win, participate, and be part of the story. Not just watching, but involved.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SUCCESS METRICS ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Measurement</div>
+      <div class="section-title">Success Metrics</div>
+      <div class="section-desc">Key performance indicators to track across the campaign lifecycle.</div>
+
+      <div class="metrics-visual">
+        <div class="metric-v">
+          <div class="metric-ring">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h5>Views</h5>
+          <p>Reels, TikTok, Shorts</p>
+        </div>
+        <div class="metric-v">
+          <div class="metric-ring">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h5>Engagement Rate</h5>
+          <p>Comments, shares, saves</p>
+        </div>
+        <div class="metric-v">
+          <div class="metric-ring">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h5>Giveaway Entries</h5>
+          <p>Total participation</p>
+        </div>
+        <div class="metric-v">
+          <div class="metric-ring">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+          </div>
+          <h5>Follower Growth</h5>
+          <p>Net new followers</p>
+        </div>
+        <div class="metric-v">
+          <div class="metric-ring">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          </div>
+          <h5>Fanatics Lift</h5>
+          <p>Cross-channel impact</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logos">
+        <span class="footer-logo">Break'n Bad</span>
+        <span class="footer-x">&times;</span>
+        <span class="footer-logo">Callie Rounds</span>
+        <span class="footer-x">&times;</span>
+        <span class="footer-logo">Fanatics</span>
+      </div>
+      <p>Campaign Overview - The Highest Break Ever - 2026</p>
+    </div>
+  </footer>
+</main>
+
+<!-- ===== DOWNLOAD BAR ===== -->
+<div class="download-bar">
+  <button class="print-btn" onclick="window.print()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Print / PDF
+  </button>
+  <button class="download-btn" onclick="downloadPNG()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Download PNG
+  </button>
+</div>
+
+<script>
+async function downloadPNG() {
+  const btn = document.querySelector('.download-btn');
+  const bar = document.querySelector('.download-bar');
+  btn.textContent = 'Generating...';
+  btn.disabled = true;
+  bar.style.display = 'none';
+
+  try {
+    const { default: html2canvas } = await import('https://cdn.skypack.dev/html2canvas');
+    const canvas = await html2canvas(document.body, {
+      backgroundColor: '#060a18',
+      scale: 2,
+      useCORS: true,
+      logging: false,
+      windowWidth: 1200,
+    });
+    const link = document.createElement('a');
+    link.download = 'highest-break-ever-campaign-overview.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  } catch (e) {
+    alert('PNG generation failed. Use Print / PDF instead.');
+    console.error(e);
+  }
+
+  bar.style.display = 'flex';
+  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PNG';
+  btn.disabled = false;
+}
+</script>
+
+</body>
+</html>
