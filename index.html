@@ -451,83 +451,51 @@
   }
 
   /* ========== VISUAL FUNNEL ========== */
+  .funnel-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: stretch;
+  }
+
   .funnel-visual {
     position: relative;
     max-width: 720px;
     margin: 0 auto;
   }
 
+  /* SVG background sits behind content */
+  .funnel-svg-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .funnel-layers {
+    position: relative;
+    z-index: 1;
+  }
+
   .funnel-layer {
     position: relative;
-    margin: 0 auto;
-    transition: transform 200ms ease;
+    text-align: center;
     cursor: default;
   }
 
-  .funnel-layer:hover {
-    transform: scale(1.02);
+  .funnel-layer-content {
+    padding: 32px 80px;
+    transition: opacity 200ms ease;
   }
 
-  .funnel-shape {
-    position: relative;
-    padding: 28px 40px;
-    text-align: center;
-    clip-path: polygon(var(--left-top) 0%, var(--right-top) 0%, var(--right-bottom) 100%, var(--left-bottom) 100%);
+  .funnel-layer:hover .funnel-layer-content {
+    opacity: 0.85;
   }
 
-  .funnel-layer-1 .funnel-shape {
-    --left-top: 0%;
-    --right-top: 100%;
-    --left-bottom: 6%;
-    --right-bottom: 94%;
-    background: linear-gradient(135deg, rgba(71, 112, 219, 0.2), rgba(71, 112, 219, 0.08));
-    border-radius: 16px 16px 0 0;
-  }
-
-  .funnel-layer-2 .funnel-shape {
-    --left-top: 6%;
-    --right-top: 94%;
-    --left-bottom: 14%;
-    --right-bottom: 86%;
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.08));
-  }
-
-  .funnel-layer-3 .funnel-shape {
-    --left-top: 14%;
-    --right-top: 86%;
-    --left-bottom: 24%;
-    --right-bottom: 76%;
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.08));
-    border-radius: 0 0 16px 16px;
-  }
-
-  .funnel-outline {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    pointer-events: none;
-  }
-
-  .funnel-layer-1 .funnel-outline {
-    border-top: 2px solid rgba(71, 112, 219, 0.4);
-    border-left: 2px solid rgba(71, 112, 219, 0.3);
-    border-right: 2px solid rgba(71, 112, 219, 0.3);
-    border-radius: 16px 16px 0 0;
-    clip-path: polygon(0% 0%, 100% 0%, 94% 100%, 6% 100%);
-  }
-
-  .funnel-layer-2 .funnel-outline {
-    border-left: 2px solid rgba(245, 158, 11, 0.3);
-    border-right: 2px solid rgba(245, 158, 11, 0.3);
-    clip-path: polygon(6% 0%, 94% 0%, 86% 100%, 14% 100%);
-  }
-
-  .funnel-layer-3 .funnel-outline {
-    border-bottom: 2px solid rgba(34, 197, 94, 0.4);
-    border-left: 2px solid rgba(34, 197, 94, 0.3);
-    border-right: 2px solid rgba(34, 197, 94, 0.3);
-    border-radius: 0 0 16px 16px;
-    clip-path: polygon(14% 0%, 86% 0%, 76% 100%, 24% 100%);
-  }
+  .funnel-layer-1 .funnel-layer-content { padding: 32px 48px; }
+  .funnel-layer-2 .funnel-layer-content { padding: 28px 80px; }
+  .funnel-layer-3 .funnel-layer-content { padding: 28px 110px; }
 
   .funnel-stage-label {
     font-size: 11px;
@@ -551,7 +519,7 @@
   .funnel-items {
     display: flex;
     justify-content: center;
-    gap: 24px;
+    gap: 20px;
     flex-wrap: wrap;
   }
 
@@ -562,6 +530,7 @@
     font-size: 13px;
     color: var(--text);
     font-weight: 500;
+    white-space: nowrap;
   }
 
   .funnel-item-dot {
@@ -571,25 +540,19 @@
     flex-shrink: 0;
   }
 
-  .funnel-arrow {
+  .funnel-divider {
     display: flex;
     justify-content: center;
-    padding: 4px 0;
+    padding: 2px 0;
   }
 
-  .funnel-arrow svg {
+  .funnel-divider svg {
     width: 24px;
     height: 24px;
     opacity: 0.3;
   }
 
   /* Side annotations for funnel */
-  .funnel-wrapper {
-    display: flex;
-    gap: 40px;
-    align-items: stretch;
-  }
-
   .funnel-annotations {
     flex: 1;
     display: flex;
@@ -959,6 +922,8 @@
     .flow-center { width: 100%; flex-direction: row; gap: 12px; margin-bottom: 12px; }
     .flow-card::before { display: none; }
     .funnel-wrapper { flex-direction: column; }
+    .funnel-layer-2 .funnel-layer-content { padding: 28px 48px; }
+    .funnel-layer-3 .funnel-layer-content { padding: 28px 48px; }
     .ideas-grid { grid-template-columns: 1fr; }
     .pillars-visual { grid-template-columns: repeat(2, 1fr); }
     .metrics-visual { flex-wrap: wrap; }
@@ -1035,16 +1000,16 @@
   <section class="section">
     <div class="container">
       <div class="section-label">Campaign Objectives</div>
-      <div class="section-title">What This Campaign Achieves</div>
-      <div class="section-desc">Three interconnected goals that compound on each other to create lasting impact.</div>
+      <div class="section-title">What We're Going After</div>
+      <div class="section-desc">This isn't just content for content's sake. Every piece serves one of three goals.</div>
 
       <div class="objectives-diagram">
         <div class="obj-node">
           <div class="obj-ring" style="color: var(--gold);">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
-          <h4>Viral, Category-Defining Moment</h4>
-          <p>Create the most talked-about break in sports card history. A moment so visual and extreme it demands to be shared.</p>
+          <h4>Make History</h4>
+          <p>Nobody has ever broken cards above Everest. That alone makes this the most shareable break in the hobby's history.</p>
         </div>
 
         <div class="obj-connector">
@@ -1055,8 +1020,8 @@
           <div class="obj-ring" style="color: var(--blue-light);">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-          <h4>Expand Beyond Collectors</h4>
-          <p>Reach mainstream audiences through adventure content and creator-driven storytelling. New eyeballs on Break'n Bad.</p>
+          <h4>New Audiences</h4>
+          <p>Adventure content reaches people who have never watched a card break. They come for the stunt, they stay for Break'n Bad.</p>
         </div>
 
         <div class="obj-connector">
@@ -1067,8 +1032,8 @@
           <div class="obj-ring" style="color: var(--green);">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
           </div>
-          <h4>Drive Engagement and Affinity</h4>
-          <p>Fuel giveaways, live stream participation, and community buzz across social and live platforms.</p>
+          <h4>Real Engagement</h4>
+          <p>Giveaways, live streams, community hype. Not vanity metrics, actual participation from people who care.</p>
         </div>
       </div>
     </div>
@@ -1077,9 +1042,9 @@
   <!-- ===== CORE CAMPAIGN MOMENTS - ALTERNATING FLOW ===== -->
   <section class="section">
     <div class="container">
-      <div class="section-label">Core Campaign Moments</div>
-      <div class="section-title">The Four Pillars of Content</div>
-      <div class="section-desc">Each moment builds on the last, creating a narrative arc from announcement through execution to the final reveal.</div>
+      <div class="section-label">The Content</div>
+      <div class="section-title">Four Moments That Tell the Story</div>
+      <div class="section-desc">Each one builds on the last. By the time the helicopter lifts off, the audience is already invested.</div>
 
       <div class="flow-timeline">
         <div class="flow-track"></div>
@@ -1090,7 +1055,7 @@
             <div class="flow-card">
               <div class="flow-phase-label" style="color: var(--blue-light);">Phase 01</div>
               <h4>Announcement Video (Hero Tease)</h4>
-              <p>Callie introduces the stunt and the stakes: "We're attempting the highest altitude break in history." CTA drives giveaway entries, follows, and save-the-date engagement.</p>
+              <p>Callie introduces the stunt and the stakes: "We're attempting the highest altitude break in history." Giveaway entry, follow, save the date. Simple, direct.</p>
               <div class="flow-tags">
                 <span class="tag tag-blue">IG Reels</span>
                 <span class="tag tag-blue">TikTok</span>
@@ -1115,7 +1080,7 @@
             <div class="flow-card">
               <div class="flow-phase-label" style="color: var(--gold);">Phase 02</div>
               <h4>Pre-Stunt Interview (Miami Content)</h4>
-              <p>Break'n Bad team meets Callie before Nepal departure. Mini documentary-style interview exploring "Why this stunt?" Humanizes Callie and builds emotional investment before the main event.</p>
+              <p>Break'n Bad team meets Callie before she flies to Nepal. Sit-down interview, "why are you doing this?" style. This is what makes people actually care before the main event drops.</p>
               <div class="flow-tags">
                 <span class="tag tag-gold">Documentary Style</span>
                 <span class="tag tag-gold">Personality-Driven</span>
@@ -1131,7 +1096,7 @@
             <div class="flow-card">
               <div class="flow-phase-label" style="color: var(--green);">Phase 03</div>
               <h4>Helicopter Break + Skydive (Hero Content)</h4>
-              <p>The main event. Card break filmed inside a helicopter above Everest with cinematic and POV angles. Cards featured again mid-skydive. High-intensity, once-in-a-lifetime footage.</p>
+              <p>This is it. Card break inside the helicopter above Everest, cinematic and POV angles, then cards featured again mid-skydive. Nothing like this has ever been filmed.</p>
               <div class="flow-tags">
                 <span class="tag tag-green">Hero Reel (60-90 sec)</span>
                 <span class="tag tag-green">Short-Form Cuts</span>
@@ -1155,7 +1120,7 @@
             <div class="flow-card">
               <div class="flow-phase-label" style="color: var(--purple);">Phase 04</div>
               <h4>Fanatics Collaboration Layer</h4>
-              <p>Co-branded packaging and cards used in the break. Joint giveaway. Amplification through Fanatics social channels and email. Legitimizes the "historic" claim and expands reach into a massive collector audience.</p>
+              <p>Co-branded packaging and cards used in the break. Joint giveaway. Fanatics pushes through their channels, which puts this in front of their entire collector base. That's the reach multiplier.</p>
               <div class="flow-tags">
                 <span class="tag tag-purple">Co-Branded Cards</span>
                 <span class="tag tag-purple">Joint Giveaway</span>
@@ -1181,57 +1146,66 @@
   <section class="section">
     <div class="container">
       <div class="section-label">Content Strategy</div>
-      <div class="section-title">Full-Funnel Content Approach</div>
-      <div class="section-desc">From first-touch awareness through deep engagement to action. Every piece of content has a purpose in the funnel.</div>
+      <div class="section-title">How the Content Flows</div>
+      <div class="section-desc">Not everything is designed to go viral. Some content hooks, some content deepens, some content converts. Here's how it all fits together.</div>
 
       <div class="funnel-wrapper">
         <div class="funnel-visual" style="flex: 1.4;">
-          <!-- Top of Funnel -->
-          <div class="funnel-layer funnel-layer-1">
-            <div class="funnel-shape">
-              <div class="funnel-outline"></div>
-              <div class="funnel-stage-label">Awareness</div>
-              <div class="funnel-stage-title">Top of Funnel</div>
-              <div class="funnel-items">
-                <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--blue);"></div>Announcement video</div>
-                <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--blue);"></div>Teaser clips</div>
-                <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--blue);"></div>Everest hooks</div>
+          <!-- SVG funnel shape background -->
+          <svg class="funnel-svg-bg" viewBox="0 0 720 360" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Top layer -->
+            <polygon points="0,0 720,0 672,118 48,118" fill="rgba(71, 112, 219, 0.12)" stroke="rgba(71, 112, 219, 0.3)" stroke-width="1.5"/>
+            <!-- Mid layer -->
+            <polygon points="48,122 672,122 600,238 120,238" fill="rgba(245, 158, 11, 0.12)" stroke="rgba(245, 158, 11, 0.3)" stroke-width="1.5"/>
+            <!-- Bottom layer -->
+            <polygon points="120,242 600,242 528,360 192,360" fill="rgba(34, 197, 94, 0.12)" stroke="rgba(34, 197, 94, 0.3)" stroke-width="1.5"/>
+          </svg>
+
+          <div class="funnel-layers">
+            <!-- Top of Funnel -->
+            <div class="funnel-layer funnel-layer-1">
+              <div class="funnel-layer-content">
+                <div class="funnel-stage-label">Awareness</div>
+                <div class="funnel-stage-title">Top of Funnel</div>
+                <div class="funnel-items">
+                  <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--blue);"></div>Announcement video</div>
+                  <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--blue);"></div>Teaser clips</div>
+                  <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--blue);"></div>Everest hooks</div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="funnel-arrow">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
+            <div class="funnel-divider">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
 
-          <!-- Mid Funnel -->
-          <div class="funnel-layer funnel-layer-2">
-            <div class="funnel-shape">
-              <div class="funnel-outline"></div>
-              <div class="funnel-stage-label">Engagement</div>
-              <div class="funnel-stage-title">Mid Funnel</div>
-              <div class="funnel-items">
-                <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--amber);"></div>Training content</div>
-                <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--amber);"></div>Miami interview</div>
-                <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--amber);"></div>BTS planning</div>
+            <!-- Mid Funnel -->
+            <div class="funnel-layer funnel-layer-2">
+              <div class="funnel-layer-content">
+                <div class="funnel-stage-label">Engagement</div>
+                <div class="funnel-stage-title">Mid Funnel</div>
+                <div class="funnel-items">
+                  <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--amber);"></div>Training content</div>
+                  <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--amber);"></div>Miami interview</div>
+                  <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--amber);"></div>BTS planning</div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="funnel-arrow">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
+            <div class="funnel-divider">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
 
-          <!-- Bottom Funnel -->
-          <div class="funnel-layer funnel-layer-3">
-            <div class="funnel-shape">
-              <div class="funnel-outline"></div>
-              <div class="funnel-stage-label">Action</div>
-              <div class="funnel-stage-title">Bottom Funnel</div>
-              <div class="funnel-items">
-                <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--green);"></div>Card giveaway</div>
-                <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--green);"></div>Watch reminders</div>
-                <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--green);"></div>Live streams</div>
+            <!-- Bottom Funnel -->
+            <div class="funnel-layer funnel-layer-3">
+              <div class="funnel-layer-content">
+                <div class="funnel-stage-label">Action</div>
+                <div class="funnel-stage-title">Bottom Funnel</div>
+                <div class="funnel-items">
+                  <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--green);"></div>Card giveaway</div>
+                  <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--green);"></div>Watch reminders</div>
+                  <div class="funnel-item"><div class="funnel-item-dot" style="background: var(--green);"></div>Live streams</div>
+                </div>
               </div>
             </div>
           </div>
@@ -1243,8 +1217,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             </div>
             <div class="funnel-annot-text">
-              <strong>Maximum Reach</strong>
-              Scroll-stopping content that introduces the stunt to the widest possible audience
+              <strong>Cast the Net Wide</strong>
+              This is how new people find out about it. Short, punchy, impossible to ignore.
             </div>
           </div>
           <div class="funnel-annot">
@@ -1252,8 +1226,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </div>
             <div class="funnel-annot-text">
-              <strong>Emotional Investment</strong>
-              Narrative content that makes the audience care about the outcome
+              <strong>Make Them Care</strong>
+              By the time the helicopter takes off, the audience should feel like they know Callie.
             </div>
           </div>
           <div class="funnel-annot">
@@ -1261,8 +1235,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div class="funnel-annot-text">
-              <strong>Convert to Action</strong>
-              Giveaway entries, follows, live attendance, and Fanatics engagement
+              <strong>Get Them Moving</strong>
+              Enter the giveaway, follow for updates, show up to the live stream. Clear next steps.
             </div>
           </div>
         </div>
@@ -1274,8 +1248,8 @@
   <section class="section">
     <div class="container">
       <div class="section-label">Deliverables</div>
-      <div class="section-title">Content Output Summary</div>
-      <div class="section-desc">Complete breakdown of deliverables across the campaign lifecycle.</div>
+      <div class="section-title">What Gets Made</div>
+      <div class="section-desc">Everything that comes out of this campaign, format and platform included.</div>
 
       <div class="deliverables-visual">
         <div class="deliv-card">
@@ -1361,57 +1335,57 @@
   <!-- ===== ADDITIONAL CAMPAIGN IDEAS ===== -->
   <section class="section">
     <div class="container">
-      <div class="section-label">Amplification</div>
-      <div class="section-title">Additional Campaign Ideas</div>
-      <div class="section-desc">Highly recommended extensions that maximize reach, build anticipation, and create ongoing engagement beyond the core moments.</div>
+      <div class="section-label">Bonus Ideas</div>
+      <div class="section-title">Ways to Push It Further</div>
+      <div class="section-desc">These aren't required, but they'd make the campaign significantly bigger. Worth discussing.</div>
 
       <div class="ideas-grid">
         <div class="idea-card">
           <div class="idea-num">Idea 01</div>
           <h4>"Road to Everest" Series</h4>
-          <p>Short episodic content leading up to the jump: altitude training, packing the cards, travel to Nepal. Builds narrative and anticipation vs. a one-off moment.</p>
+          <p>Short episodes leading up to the jump: altitude training, packing the cards, flying to Nepal. Turns a single stunt into a multi-week storyline.</p>
           <div class="idea-tag"><span class="tag tag-blue">Series Content</span></div>
         </div>
         <div class="idea-card">
           <div class="idea-num">Idea 02</div>
           <h4>Altitude Countdown Mechanic</h4>
-          <p>Visual countdown from sea level to 29,000 ft. Each post represents increasing altitude milestones. Hook: "We're getting closer to the highest break ever."</p>
+          <p>Visual countdown from sea level to 29,000 ft. Each post is a new altitude milestone. Simple recurring format that builds anticipation without needing new ideas every time.</p>
           <div class="idea-tag"><span class="tag tag-gold">Visual Hook</span></div>
         </div>
         <div class="idea-card">
           <div class="idea-num">Idea 03</div>
           <h4>Card Reveal Strategy</h4>
-          <p>Tease the cards before the stunt with blurred previews, partial reveals, and "Guess the card" engagement posts. Drives collector speculation and shares.</p>
+          <p>Tease the cards before the stunt. Blurred previews, partial reveals, "guess the card" posts. Collectors will lose their minds speculating.</p>
           <div class="idea-tag"><span class="tag tag-purple">Engagement</span></div>
         </div>
         <div class="idea-card">
           <div class="idea-num">Idea 04</div>
           <h4>"What Would You Risk?"</h4>
-          <p>Engagement-driven social prompt: "Would you skydive with a $X card?" Polls, duets, and stitches that invite audience participation.</p>
+          <p>"Would you skydive with a $10K card?" Polls, duets, stitches. The kind of question people actually want to answer and argue about in the comments.</p>
           <div class="idea-tag"><span class="tag tag-amber">Social Prompt</span></div>
         </div>
         <div class="idea-card">
           <div class="idea-num">Idea 05</div>
           <h4>Live Stream Tie-In</h4>
-          <p>Pre-jump live stream Q&A to build hype. Post-jump reaction stream breaking down the footage. Brings the community into the moment in real time.</p>
+          <p>Pre-jump live Q&A to build hype. Post-jump reaction stream breaking down the footage. The community gets to be part of it in real time, not just watching after the fact.</p>
           <div class="idea-tag"><span class="tag tag-green">Live</span></div>
         </div>
         <div class="idea-card">
           <div class="idea-num">Idea 06</div>
           <h4>Limited "Everest Break" Drop</h4>
-          <p>If feasible with Fanatics: special branded packs tied to the stunt. Only available during the campaign window. Scarcity drives action.</p>
+          <p>If Fanatics is open to it: special branded packs tied to the stunt. Only available during the campaign window. Limited run, limited time.</p>
           <div class="idea-tag"><span class="tag tag-gold">Commerce</span></div>
         </div>
         <div class="idea-card">
           <div class="idea-num">Idea 07</div>
           <h4>Press + PR Angle</h4>
-          <p>Pitch as "First-ever sports card break above Mount Everest." Targets sports media, collectibles outlets, and mainstream viral coverage.</p>
+          <p>"First-ever sports card break above Mount Everest" is a headline that writes itself. Sports media, collectibles outlets, even mainstream press would pick this up.</p>
           <div class="idea-tag"><span class="tag tag-blue">PR</span></div>
         </div>
         <div class="idea-card">
           <div class="idea-num">Idea 08</div>
           <h4>"Did It Survive?" Post-Stunt Hook</h4>
-          <p>After landing: reveal the condition of the cards. Adds suspense and payoff. The question everyone will be asking, turned into content.</p>
+          <p>After landing: reveal the condition of the cards. Everyone will be asking. That's a whole second wave of content from one question.</p>
           <div class="idea-tag"><span class="tag tag-purple">Suspense</span></div>
         </div>
       </div>
@@ -1431,8 +1405,8 @@
   <section class="section">
     <div class="container">
       <div class="section-label">Messaging</div>
-      <div class="section-title">Key Messaging Pillars</div>
-      <div class="section-desc">Four themes that anchor every piece of campaign communication.</div>
+      <div class="section-title">The Story We're Telling</div>
+      <div class="section-desc">Every post, every caption, every interview should lean into one of these four angles.</div>
 
       <div class="pillars-visual">
         <div class="pillar-v">
@@ -1441,7 +1415,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
           <h4>Historic</h4>
-          <p>Never been done before. First of its kind. A record-setting moment in the sports card space.</p>
+          <p>This has literally never been done. First of its kind. That fact alone carries weight in every piece of content.</p>
         </div>
         <div class="pillar-v">
           <div class="pillar-bar"></div>
@@ -1449,7 +1423,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
           <h4>Risk + Reward</h4>
-          <p>Cards at extreme altitude. High stakes, high payoff. The tension between value and spectacle.</p>
+          <p>Valuable cards at 23,000 ft in a helicopter. The tension writes itself. What happens to them?</p>
         </div>
         <div class="pillar-v">
           <div class="pillar-bar"></div>
@@ -1457,7 +1431,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-light)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           </div>
           <h4>Spectacle</h4>
-          <p>Visual, cinematic, shareable. Content so stunning it stops the scroll and demands attention.</p>
+          <p>Himalayan backdrop, helicopter footage, freefall. The visuals alone will stop people mid-scroll.</p>
         </div>
         <div class="pillar-v">
           <div class="pillar-bar"></div>
@@ -1465,7 +1439,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
           <h4>Community</h4>
-          <p>Fans can win, participate, and be part of the story. Not just watching, but involved.</p>
+          <p>The giveaway, the guessing, the live streams. People aren't just watching, they're part of it.</p>
         </div>
       </div>
     </div>
@@ -1475,8 +1449,8 @@
   <section class="section">
     <div class="container">
       <div class="section-label">Measurement</div>
-      <div class="section-title">Success Metrics</div>
-      <div class="section-desc">Key performance indicators to track across the campaign lifecycle.</div>
+      <div class="section-title">How We Know It Worked</div>
+      <div class="section-desc">The numbers we're watching after everything goes live.</div>
 
       <div class="metrics-visual">
         <div class="metric-v">
